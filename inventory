@@ -1,3 +1,5 @@
-10.0.24.104 apache_package=apache2 php_package=libapache2-mod-php
-10.0.24.117 apache_package=httpd php_package=php
+[web_servers]
+10.0.24.104 
 
+[db_servers]
+10.0.24.117
