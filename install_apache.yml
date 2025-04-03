@@ -1,11 +1,11 @@
 ---
 - hosts: all
   become: true
-  tasks: 
+  tasks:
 
   - name: install apache2 package
     ansible.builtin.package:
-      name: 
+      name:
         - "{{ apache_package }}"
         - "{{ php_package}}"
       state: latest
