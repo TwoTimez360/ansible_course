@@ -10,7 +10,17 @@
 ansible_python_interpreter=/usr/bin/python3
 
 [Windows_Servers]
-10.0.24.121
+10.0.24.104
+
+[Windows_Servers:vars]
+ansible_user=Ansible
+ansible_password=""
+ansible_port=5986
+ansible_connection=winrm
+ansible_winrm_scheme=https
+ansible_winrm_server_cert_validation=ignore
+ansible_winrm_kerberos_delegation=true
+
 
 [Windows_Servers:vars]
 ansible_user=Ansible
