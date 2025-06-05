@@ -10,7 +10,7 @@
 ansible_python_interpreter=/usr/bin/python3
 
 [Windows_Servers]
-10.0.24.104
+10.0.24.111
 
 [Windows_Servers:vars]
 ansible_user=Ansible
