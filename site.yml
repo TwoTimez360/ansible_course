@@ -31,7 +31,7 @@
 
   - name: copy html file for site
     tags: apache,ubuntu
-    ansible.buuiltin.copy:
+    ansible.builtin.copy:
       src: deault_site.html
       dest: /var/www/html.index.html
       owner: root
