@@ -1,6 +1,6 @@
 [web_servers]
 10.0.24.104 
-10.0.24.120
+10.0.24.109
 
 [db_servers]
 10.0.24.119
@@ -31,8 +31,8 @@ ansible_winrm_scheme=https
 ansible_winrm_server_cert_validation=ignore
 ansible_winrm_kerberos_delegation=true
 
-[rhino_linux]
-10.0.24.120
+#[rhino_linux]
+#10.0.24.120
 
 [Fedora_Servers]
 10.0.24.119
