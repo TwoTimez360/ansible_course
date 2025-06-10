@@ -48,12 +48,3 @@
       name: mariadb
       state: latest
     when: ansible_distribution == "Fedora"
-  
-  - name: copy vault file for ansible
-    tags: fedora
-    ansible.builtin.copy:
-      src: /home/treed/.open_vault.txt
-      dest: /home/treed/.open_vault.txt
-      owner: root
-      group: root
-      mode: 0644
