@@ -70,6 +70,13 @@
       mode: 0644
     when: ansible_distribution == "Fedora"
 
+  - name: create user
+    tags: always
+    ansible.builtin.user:
+      name: simone
+      groups: root
+
+
 - hosts: db_servers
   tags: db,fedora
   become: true
