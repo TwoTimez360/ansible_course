@@ -1,0 +1,14 @@
+--- 
+
+- hosts: Fedora_Servers
+  tags: db,fedora
+  become: false
+  tasks:
+
+  - name: copy vault file for ansible
+    ansible.builtin.copy:
+      src: /home/treed/.open_vault.txt
+      dest: /home/treed/
+      owner: root
+      group: root
+      mode: 0644
