@@ -47,7 +47,7 @@
     tags: apache,fedora
     ansible.builtin.service:
       name: httpd
-      state: started
+      state: latest
     when: ansible_distribution == "Fedora"
 
   - name: copy html file for site (ubuntu)
