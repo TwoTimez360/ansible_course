@@ -15,15 +15,15 @@
       name: apache2
       state: absent
     when: ansible_distribution == "Ubuntu"  
-
+    
   - name: remove support for php
     tags: apache,ubuntu
     ansible.builtin.apt:
       name: libapache2-mod-php
       state: absent
     when: ansible_distribution == "Ubuntu"  
-
- - name: remove apache on web server (fedora)
+    
+  - name: remove apache on web server (fedora)
     tags: apache,fedora
     ansible.builtin.dnf:
       name: httpd
