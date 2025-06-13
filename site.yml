@@ -54,7 +54,6 @@
     tags: apache,ubuntu
     ansible.builtin.copy:
       src: default_site.html
-
       dest: /var/www/html/index.html
       owner: root
       group: root
@@ -64,6 +63,7 @@
   - name: copy html file for site (fedora)
     tags: apache,fedora
     ansible.builtin.copy:
+      src: default_site.html
       dest: /var/www/html/index.html
       owner: root
       group: root
