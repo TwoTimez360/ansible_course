@@ -4,7 +4,7 @@
 - name: Windows update playbook
   hosts: Windows_Servers
   gather_facts: true
-  become: true
+  become: false
 
   # Create a reject_list of patches we don't want
   vars:
