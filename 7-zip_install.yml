@@ -10,11 +10,11 @@
   #  name: 7zip
    # state: absent
 
-# Install/uninstall with win_package
-#- name: Download the 7-Zip package
- # win_get_url:
-  #  url: https://www.7-zip.org/a/7z1701-x64.msi
-   # dest: C:\temp\7z.msi
+ Install/uninstall with win_package
+- name: Download the 7-Zip package
+  win_get_url:
+    url: https://www.7-zip.org/a/7z1701-x64.msi
+    dest: C:\temp\7z.msi
 
 - name: Ensure 7-Zip is installed through win_package
   win_package:
