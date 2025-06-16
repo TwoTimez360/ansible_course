@@ -29,19 +29,26 @@
         name: LocalGroup
         description: Allow access to C:\Development folder
 
-    - name: Create local user
+    - name: Create local users
       win_user:
         name: Harold
         password: Bananas4321!
         groups: LocalGroup
         update_password: on_create
         password_never_expires: true
-      loop:
-      - name: Paul
-        password: Password123!
-      - name: Caitlyn
-        password: Password234!
-        
+      win_user:
+        name: Jenna
+        password: Strawberry4322!
+        groups: LocalGroup
+        update_password: on_create
+        password_never_expires: true  
+      win_user:
+        name: Cori
+        password: Pineapple4321!
+        groups: LocalGroup
+        update_password: on_create
+        password_never_expires: true
+              
     - name: Create Development folder
       win_file:
         path: C:\Development
