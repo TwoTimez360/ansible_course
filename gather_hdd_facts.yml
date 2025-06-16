@@ -1,5 +1,5 @@
 ---
-- hosts: win
+- hosts: Windows_Servers
   tasks:
   - name: Get disk facts
     win_disk_facts:
@@ -21,7 +21,7 @@
 
 ```yaml
 ---
-- hosts: win
+- hosts: Windows_Servers
   tasks:
    - name: Get disk facts
      win_command: wmic cpu get caption, deviceid, name, numberofcores, maxclockspeed, status
