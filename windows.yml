@@ -31,16 +31,16 @@
 
     - name: Create local user
       win_user:
-        name: '{{ Harold.Givens }}'
-        password: '{{ Bananas4321! }}'
+        name: Harold
+        password: Bananas4321!
         groups: LocalGroup
         update_password: false
         password_never_expires: true
       loop:
-      - name: Paul.Sayer
+      - name: Paul
         password: Password123!
-      - name: Caitlyn.Clark
-        password: Password2
+      - name: Caitlyn
+        password: Password234!
         
     - name: Create Development folder
       win_file:
