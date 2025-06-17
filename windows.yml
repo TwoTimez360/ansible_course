@@ -31,24 +31,19 @@
 
     - name: Create local users
       win_user:
-        name: Harold
-        password: Bananas4321!
+        name: '{{item.name}}'
+        password: '{{item.password}}'
         groups: LocalGroup
         update_password: always
         password_never_expires: true
       win_user:
-        name: Jenna
+      - name: Jenna
         password: Strawberry4322!
-        groups: LocalGroup
-        update_password: always
-        password_never_expires: true
-      win_user:
-        name: Cori
-        password: Pineapple4321!
-        groups: LocalGroup
-        update_password: always
-        password_never_expires: true
-              
+      - name: Earl
+        password: WaterMelon4321!
+      - name: Deadpool
+        password: Francis4321!
+                      
     - name: Create Development folder
       win_file:
         path: C:\Development
