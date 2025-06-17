@@ -69,9 +69,9 @@
     - name: Install all security updates
       win_updates:
         category_names:
-          - SecurityUpdates
           - CriticalUpdates
-    
+          - SecurityUpdates
+              
     #- name: Reboot host if required
      # win_reboot:
       #when: update_result.reboot_required
