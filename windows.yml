@@ -76,9 +76,9 @@
      # win_reboot:
       #when: update_result.reboot_required
     
-    - name: Install Microsoft® SQL Server® 2019 Express (DPAPI example)
+    - name: Install Microsoft® SQL Server® 2022 Eval
       ansible.windows.win_package:
-        path: C:\temp\SQL2022-SSEI-Eval.exe
+        path: C:\Temp\SQL2022-SSEI-Eval.exe
         product_id: Microsoft SQL Server SQL2022
         arguments:
           - SAPWD=VeryHardPassword
@@ -87,7 +87,7 @@
       vars:
         ansible_become_method: runas
         ansible_become_user: Ansible
-        #ansible_become_pass: "{{ password }}"
+        #ansible_become_pass: KungFuKiloDallas360!!
 
     - name: Install the Visual C thingy
       ansible.windows.win_package:
