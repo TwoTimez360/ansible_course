@@ -75,20 +75,6 @@
     #- name: Reboot host if required
      # win_reboot:
       #when: update_result.reboot_required
-    
-    - name: Install Microsoft® SQL Server® 2022 Eval
-      ansible.windows.win_package:
-        path: C:\Temp\SQL2022-SSEI-Eval.exe
-        product_id: Microsoft SQL Server SQL2022
-        arguments:
-          - SAPWD=VeryHardPassword
-          - /ConfigurationFile=C:\temp\configuration.ini
-      become: true
-      vars:
-        ansible_become_method: runas
-        ansible_become_user: Ansible
-        ansible_become_pass: KungFuKiloDallas360!!
-
     - name: Install the Visual C thingy
       ansible.windows.win_package:
         path: http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe
@@ -114,4 +100,17 @@
         product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
         state: present
         log_path: C:\logs\vcredist_x64-exe-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
+
+    - name: Install Microsoft® SQL Server® 2022 Eval
+      ansible.windows.win_package:
+        path: C:\Temp\SQL2022-SSEI-Eval.exe
+        product_id: Microsoft SQL Server SQL2022
+        arguments:
+          - SAPWD=VeryHardPassword
+          - /ConfigurationFile=C:\temp\configuration.ini
+      become: true
+      vars:
+        ansible_become_method: runas
+        ansible_become_user: Ansible
+        ansible_become_pass: KungFuKiloDallas360!!  
     
