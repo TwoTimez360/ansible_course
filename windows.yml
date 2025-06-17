@@ -142,9 +142,9 @@
         arguments:
           - SAPWD=VeryHardPassword
           - /ConfigurationFile=C:\temp\configuration.ini
-      become: true
-      vars:
-        ansible_become_method: runas
-        ansible_become_user: Ansible
-        ansible_become_pass: KungFuKiloDallas360!!  
+     # become: true
+     # vars:
+     #   ansible_become_method: runas
+     #   ansible_become_user: Ansible
+     #   ansible_become_pass:  
     
