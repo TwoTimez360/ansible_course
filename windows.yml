@@ -78,7 +78,7 @@
     
     - name: Install Microsoft® SQL Server® 2019 Express (DPAPI example)
       ansible.windows.win_package:
-        path: C:\temp\SQL2022-SSEl-Eval.EXE
+        path: C:\temp\SQL2022-SSEI-Eval.exe
         product_id: Microsoft SQL Server SQL2022
         arguments:
           - SAPWD=VeryHardPassword
