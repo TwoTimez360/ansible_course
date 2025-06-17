@@ -41,7 +41,7 @@
         password: Strawberry4322!
         groups: LocalGroup
         update_password: on_create
-        password_never_expires: true  
+        password_never_expires: true
       win_user:
         name: Cori
         password: Pineapple4321!
@@ -77,9 +77,9 @@
           - SecurityUpdates
           - CriticalUpdates
     
-    - name: Reboot host if required
-      win_reboot:
-      when: update_result.reboot_required
+    #- name: Reboot host if required
+     # win_reboot:
+      #when: update_result.reboot_required
     
     
 
