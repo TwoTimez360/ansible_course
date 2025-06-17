@@ -75,7 +75,8 @@
     #- name: Reboot host if required
      # win_reboot:
       #when: update_result.reboot_required
-    - name: Install the Visual C thingy
+      
+    - name: Install the Visual C
       ansible.windows.win_package:
         path: http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe
         product_id: '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}'
@@ -83,7 +84,7 @@
 
     - name: Install MSBuild with arguments split to prevent quotes
       ansible.windows.win_package:
-        path: https://download.visualstudio.microsoft.com/download/pr/9665567e-f580-4acd-85f2-bc94a1db745f/vs_BuildTools.exe
+        path: https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030:123a528989a749c0bea8f070f5cbffdc
         product_id: '{D1437F51-786A-4F57-A99C-F8E94FBA1BD8}'
         arguments:
           - --norestart
