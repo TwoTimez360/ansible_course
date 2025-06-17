@@ -36,7 +36,7 @@
         groups: LocalGroup
         update_password: always
         password_never_expires: true
-      win_user:
+      with_items:
       - name: Jenna
         password: Strawberry4322!
       - name: Earl
