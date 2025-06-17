@@ -34,19 +34,19 @@
         name: Harold
         password: Bananas4321!
         groups: LocalGroup
-        update_password: on_create
+        update_password: always
         password_never_expires: true
       win_user:
         name: Jenna
         password: Strawberry4322!
         groups: LocalGroup
-        update_password: on_create
+        update_password: always
         password_never_expires: true
       win_user:
         name: Cori
         password: Pineapple4321!
         groups: LocalGroup
-        update_password: on_create
+        update_password: always
         password_never_expires: true
               
     - name: Create Development folder
