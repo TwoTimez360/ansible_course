@@ -87,7 +87,7 @@
       vars:
         ansible_become_method: runas
         ansible_become_user: Ansible
-        #ansible_become_pass: KungFuKiloDallas360!!
+        ansible_become_pass: KungFuKiloDallas360!!
 
     - name: Install the Visual C thingy
       ansible.windows.win_package:
