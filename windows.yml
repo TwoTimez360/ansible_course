@@ -91,7 +91,7 @@
 
     - name: Reboot when Web-Server feature requires it
       ansible.windows.win_reboot:
-        when: iis_install.reboot_required
+      # when: iis_install.reboot_required
     
     # One way to ensure the system is reliable, is to set WinRM to a delayed startup
     - name: Ensure WinRM starts when the system has settled and is ready to work reliably
