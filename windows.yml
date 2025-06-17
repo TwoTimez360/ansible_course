@@ -128,12 +128,12 @@
           - --add
           - Microsoft.Net.Component.4.6.TargetingPack
 
-    - name: Install Remote Desktop Connection Manager from msi with a permanent log
-      ansible.windows.win_package:
-        path: https://download.microsoft.com/download/A/F/0/AF0071F3-B198-4A35-AA90-C68D103BDCCF/rdcman.msi
-        product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
-        state: present
-        log_path: C:\logs\vcredist_x64-exe-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
+#    - name: Install Remote Desktop Connection Manager from msi with a permanent log
+#      ansible.windows.win_package:
+#        path: https://download.microsoft.com/download/A/F/0/AF0071F3-B198-4A35-AA90-C68D103BDCCF/rdcman.msi
+#        product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
+#        state: present
+#        log_path: C:\logs\vcredist_x64-exe-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
 
     - name: Install Microsoft® SQL Server® 2022 Eval
       ansible.windows.win_package:
