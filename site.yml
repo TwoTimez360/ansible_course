@@ -33,7 +33,7 @@
     tags: apache,fedora
     ansible.builtin.dnf:
       name: httpd
-      state: started
+      state: latest
     when: ansible_distribution == "Fedora"
 
   - name: ensure apache is running (ubuntu)
@@ -54,7 +54,6 @@
     tags: apache,ubuntu
     ansible.builtin.copy:
       src: default_site.html
-
       dest: /var/www/html/index.html
       owner: root
       group: root
@@ -64,11 +63,19 @@
   - name: copy html file for site (fedora)
     tags: apache,fedora
     ansible.builtin.copy:
+      src: default_site.html
       dest: /var/www/html/index.html
       owner: root
       group: root
       mode: 0644
     when: ansible_distribution == "Fedora"
+
+  - name: create user
+    tags: always
+    ansible.builtin.user:
+      name: simone
+      groups: root
+
 
 - hosts: db_servers
   tags: db,fedora

@@ -24,10 +24,127 @@
     - debug:
         var: md5_checksum.stat.checksum
 
+    - name: Create local group to contain new users
+      win_group:
+        name: LocalGroup
+        description: Allow access to C:\Development folder
+
+    - name: Create local users
+      win_user:
+        name: '{{item.name}}'
+        password: '{{item.password}}'
+        groups: LocalGroup
+        update_password: always
+        password_never_expires: true
+      with_items:
+      - name: Jenna
+        password: Strawberry4322!
+      - name: Earl
+        password: WaterMelon4321!
+      - name: Deadpool
+        password: Francis4321!
+                      
+    - name: Create Development folder
+      win_file:
+        path: C:\Development
+        state: directory
+
+    - name: Set ACL of Development folder
+      win_acl:
+        path: C:\Development
+        rights: FullControl
+        state: present
+        type: allow
+        user: LocalGroup
+
+    - name: Remove parent inheritance of Development folder
+      win_acl_inheritance:
+        path: C:\Development
+        reorganize: true
+        state: absent    
+
+    - name: Run an executable using win_command
+      win_command: whoami.exe    
+
     - name: Install all security updates
       win_updates:
         category_names:
+          - CriticalUpdates
           - SecurityUpdates
+              
+    #- name: Reboot host if required
+     # win_reboot:
+      #when: update_result.reboot_required
 
+    - name: Reboot the machine with all defaults
+      ansible.windows.win_reboot:
 
+    #- name: Reboot a slow machine that might have lots of updates to apply
+    #  ansible.windows.win_reboot:
+    #    reboot_timeout: 3600
+
+    # Install a Windows feature and reboot if necessary
+    - name: Install IIS Web-Server
+      ansible.windows.win_feature:
+        name: Web-Server
+        register: iis_install
+
+    - name: Reboot when Web-Server feature requires it
+      ansible.windows.win_reboot:
+      # when: iis_install.reboot_required
+    
+    # One way to ensure the system is reliable, is to set WinRM to a delayed startup
+    - name: Ensure WinRM starts when the system has settled and is ready to work reliably
+      ansible.windows.win_service:
+        name: WinRM
+        start_mode: delayed
+    
+    # Additionally, you can add a delay before running the next task
+    #- name: Reboot a machine that takes time to settle after being booted
+    # ansible.windows.win_reboot:
+    #    post_reboot_delay: 120
+    
+    # Or you can make win_reboot validate exactly what you need to work before running the next task
+    #- name: Validate that the netlogon service has started, before running the next task
+    #  ansible.windows.win_reboot:
+    #    test_command: 'exit (Get-Service -Name Netlogon).Status -ne "Running"'  
+      
+    - name: Install the Visual C
+      ansible.windows.win_package:
+        path: http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe
+        product_id: '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}'
+        arguments: /install /passive /norestart
+
+    - name: Install MSBuild with arguments split to prevent quotes
+      ansible.windows.win_package:
+        path: https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030:123a528989a749c0bea8f070f5cbffdc
+        product_id: '{D1437F51-786A-4F57-A99C-F8E94FBA1BD8}'
+        arguments:
+          - --norestart
+          - --passive
+          - --wait
+          - --add
+          - Microsoft.Net.Component.4.6.1.TargetingPack
+          - --add
+          - Microsoft.Net.Component.4.6.TargetingPack
+
+#    - name: Install Remote Desktop Connection Manager from msi with a permanent log
+#      ansible.windows.win_package:
+#        path: https://download.microsoft.com/download/A/F/0/AF0071F3-B198-4A35-AA90-C68D103BDCCF/rdcman.msi
+#        product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
+#        state: present
+#        log_path: C:\logs\vcredist_x64-exe-{{lookup('pipe', 'date +%Y%m%dT%H%M%S')}}.log
+
+#    - name: Install Microsoft® SQL Server® 2025 Eval
+#      ansible.windows.win_package:
+#        path: C:\Temp\SQL2025-SSEI-Eval.exe
+#        product_id: Microsoft SQL Server SQL2025
+#        arguments:
+#          - SAPWD=VeryHardPassword
+#          - /ConfigurationFile=C:\temp\configuration.ini
+     # become: true
+     # vars:
+     #   ansible_become_method: runas
+     #   ansible_become_user: Ansible
+     #   ansible_become_pass:  
     

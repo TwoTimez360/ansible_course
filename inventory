@@ -39,3 +39,6 @@ ansible_winrm_kerberos_delegation=true
 [Fedora_Servers]
 10.0.24.119
 10.0.24.122
+
+[Fedora_Servers:vars]
+ansible_python_interpreter=/usr/bin/python3
